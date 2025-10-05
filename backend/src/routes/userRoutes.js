@@ -4,6 +4,7 @@ import {
   logoutUser,
   registerUser,
   refreshAccessToken,
+  otpVerification
 } from "../controllers/userController.js";
 import { verifyJWT } from "../middleware/authMiddleware.js";
 
@@ -16,5 +17,7 @@ router.route("/login").post(loginUser);
 router.route("/logout").post(verifyJWT, logoutUser);
 
 router.route("/refresh-token").post(refreshAccessToken);
+
+router.route("/otpverification").post(otpVerification);
 
 export default router;
