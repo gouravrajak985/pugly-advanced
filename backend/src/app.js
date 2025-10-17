@@ -17,9 +17,11 @@ app.use(cookieParser())
 
 //routes import
 import userRouter from './routes/userRoutes.js'
+import storeRouter from './routes/storeRoutes.js'
 
 //routes declaration
 app.use("/api/v1/users", userRouter)
+app.use("/api/v1/stores", storeRouter)
 
 
 // http://localhost:8000/api/v1/users/register

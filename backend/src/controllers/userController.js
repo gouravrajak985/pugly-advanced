@@ -332,7 +332,23 @@ const otpVerification = asyncHandler(async (req, res) => {
     throw new ApiError(500, "Failed to complete verification process");
   }
 
-})
+});
+
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    res.json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      is_verified: user.is_verified,
+    });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
+});
 
 
-export { registerUser, loginUser, logoutUser, refreshAccessToken, otpVerification };
+export { registerUser, loginUser, logoutUser, refreshAccessToken, otpVerification, getUserProfile };
